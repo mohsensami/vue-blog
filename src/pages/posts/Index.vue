@@ -8,16 +8,24 @@
     <span class="visually-hidden">Loading...</span>
   </div>
 
-  <div v-else class="col-md-4" v-for="post in posts" :key="post.id">
-    <div class="card">
-      <div class="card-header">
-        <router-link :to="{ name: 'postId', params: { id: post.id } }">
+  <div v-else class="col-md-3" v-for="post in posts" :key="post.id">
+    <div class="card" style="width: 18rem">
+      <img
+        :src="`https://picsum.photos/id/${post.id}/300/200`"
+        class="card-img-top"
+        :alt="post.title"
+      />
+      <div class="card-body">
+        <h5 class="card-title">
           {{ post.title }}
-        </router-link>
+        </h5>
+        <p class="card-text">{{ post.body }}</p>
+        <router-link
+          :to="{ name: 'postId', params: { id: post.id } }"
+          class="btn btn-sm btn-primary"
+          >See more</router-link
+        >
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Body : {{ post.body }}</li>
-      </ul>
     </div>
   </div>
 </template>

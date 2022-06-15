@@ -5,7 +5,7 @@
         <span class="visually-hidden">Loading...</span>
       </div>
 
-      <div v-else class="col-md-4" v-for="user in users" :key="user.id">
+      <div v-else class="col-md-2" v-for="user in users" :key="user.id">
         <UserCardViwe :user="user" />
       </div>
     </div>

@@ -4,29 +4,48 @@
   </div>
 
   <div v-else class="col-md-12">
-    <div class="card mb-4">
-      <div class="card-header">
-        <h1>{{ post.title }}</h1>
+    <div class="row">
+      <div class="col-md-9">
+        <div class="card mb-4">
+          <div class="card-header">
+            <h1>{{ post.title }}</h1>
+          </div>
+          <div class="card-body">
+            <div class="text-center mb-4">
+              <img
+                :src="`https://picsum.photos/id/${post.id}/800/400`"
+                class="img-thumbnail"
+              />
+            </div>
+            Body : {{ post.body }}{{ post.body }}{{ post.body }}{{ post.body }}
+          </div>
+          <div class="card-footer">
+            <button @click="deletePost" class="btn btn-sm btn-danger me-4">
+              Delete
+            </button>
+            <router-link
+              class="btn btn-sm btn-dark"
+              :to="{ name: 'editPost', params: { id: post.id } }"
+              >Edit</router-link
+            >
+          </div>
+        </div>
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          Body : {{ post.body }}{{ post.body }}{{ post.body }}{{ post.body }}
-        </li>
-      </ul>
-      <div class="card-footer">
-        <button @click="deletePost" class="btn btn-sm btn-danger me-4">
-          Delete
-        </button>
-        <router-link
-          class="btn btn-sm btn-dark"
-          :to="{ name: 'editPost', params: { id: post.id } }"
-          >Edit</router-link
-        >
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-header">Author</div>
+          <div class="card-body">
+            <img
+              :src="`https://i.pravatar.cc/400?img=${post.userId}`"
+              class="img-thumbnail"
+            />
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-header">Comments</div>
+      <h4 class="card-header">Comments</h4>
       <div class="card-body">
         <div v-for="comment in comments" :key="comment.id">
           <div class="card mb-2">
